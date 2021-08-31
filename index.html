@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="./css/ui.css">
+    <script src="./js/calc.js"></script>    
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <title>股價行事曆</title>
+</head>
+<body>
+    <!-- Navigation bar -->
+    <nav class="w-full fixed z-10">
+        <div class="bg-white bg-opacity-70 shadow backdrop-filter backdrop-blur-lg border-gray-200">
+            <div class="max-w-6xl mx-auto px-4 py-1 flex justify-between items-center">
+                <a id="home" class="cursor-pointer">
+                    <div class="flex">                
+                        <div>
+                            <img src="./img/icon.png" class="w-8 pt-1">
+                        </div>
+                        <span class="p-4 font-bold text-gray-700">股價行事曆</span>            
+                    </div>
+                </a>
+                <div class="hidden md:flex text-gray-700">
+                    <div class="p-4"><a id="aboutLink" class="border-b-2 border-transparent hover:border-gray-700 py-1 hover:text-black cursor-pointer">關於</a></div>
+                    <div class="p-4"><a id="upLink" class="border-b-2 border-transparent hover:border-gray-700 py-1 hover:text-black cursor-pointer">上漲行事曆</a></div>
+                    <div class="p-4"><a id="downLink" class="border-b-2 border-transparent hover:border-gray-700 py-1 hover:text-black cursor-pointer">下跌行事曆</a></div>
+                    <div class="p-4"><a id="faqLink" class="border-b-2 border-transparent hover:border-gray-700 py-1 hover:text-black cursor-pointer">常見問題</a></div>
+                </div>
+                <div class="md:hidden flex">
+                    <button class="more-button">
+                        <i class="fas fa-bars fa-lg"></i>
+                    </button>
+                </div>
+            </div>
+        </div>        
+        <div class="more-menu text-gray-700 hidden md:hidden">
+            <div class="bg-white bg-opacity-70 shadow backdrop-filter backdrop-blur-lg border-gray-200">
+                <a id="aboutLinkMobile"><div class="text-lg px-4 py-1 hover:bg-gray-100 hover:bg-opacity-50 hover:text-gray-900">關於</div></a>
+                <a id="upLinkMobile"><div class="text-lg px-4 py-1 hover:bg-gray-100 hover:bg-opacity-50 hover:text-gray-900">上漲行事曆</div></a>
+                <a id="downLinkMobile"><div class="text-lg px-4 py-1 hover:bg-gray-100 hover:bg-opacity-50 hover:text-gray-900">下跌行事曆</div></a>
+                <a id="faqLinkMobile"><div class="text-lg px-4 py-1 hover:bg-gray-100 hover:bg-opacity-50 hover:text-gray-900">常見問題</div></a>
+            </div>            
+            <div class="blankArea bg-transparent h-screen filter blur-none"></div>
+        </div>
+    </nav>
+    <div class="hidden lg:flex flex w-full h-screen flex bg-cover bg-right md:bg-top h-screen bg-no-repeat items-center" style="background-image: url(./img/background.jpg)">            
+        <div class="w-1/3 flex h-screen items-end">
+            <img class="w-auto h-4/5 px-5" src="./img/mememan.png" alt="">
+        </div>
+        <div class="w-1/3 h-full flex flex-col filter drop-shadow-2xl">
+                <div class="h-1/2"></div>
+                <div class="h-1/2 w-full flex flex-col">
+                    <div class="mb-0 flex justify-center"><span class="text-white font-bold text-4xl lg:text-5xl">股價行事曆</span></div>
+                    <div class="h-1/3 p-1 flex justify-center"><span class="text-white font-bold text-4xl lg:text-3xl">大膽預測未來股價</span></div>
+                    <div class="h-1/3 flex justify-center">
+                        <div>
+                            <button id="startButton" class="bg-yellow-500 px-4 py-2 text-2xl rounded-lg text-white font-bold shadow ring ring-yellow-500 ring-opacity-50 bg-gradient-to-b hover:from-yellow-400 hover:to-red-400 hover:from-yellow-400 hover:to-red-400">開始預測</button>
+                        </div>
+                    </div>
+                </div>
+        </div>                            
+    </div>
+    <div class="hidden md:flex lg:hidden flex w-full h-screen flex bg-cover bg-right md:bg-top h-screen bg-no-repeat items-center" style="background-image: url(./img/background.jpg)">            
+            <div class="w-1/2 flex h-screen items-end">
+                <img class="w-auto h-4/5 px-5" src="./img/mememan.png" alt="">
+            </div>
+            <div class="w-1/2 h-full flex flex-col">
+                <div class="h-1/2"></div>
+                <div class="h-1/2 w-full flex flex-col">
+                    <div class="flex justify-center"><span class="text-white font-bold text-4xl">股價行事曆</span></div>
+                    <div class="h-1/3 p-1 flex justify-center"><span class="text-white font-bold text-2xl">大膽預測未來股價</span></div>
+                    <div class="h-1/2 flex justify-center">
+                        <div>
+                            <button id="startButton" class="bg-yellow-500 px-4 py-2 text-2xl rounded-lg text-white font-bold shadow ring ring-yellow-500 ring-opacity-50 bg-gradient-to-b hover:from-yellow-400 hover:to-red-400">開始預測</button>
+                        </div>
+                    </div>
+                </div>                                  
+            </div>                            
+    </div>
+    <div class="max-w-screen w-full flex md:hidden bg-cover bg-right bg-no-repeat items-center relative" style="background-image: url(./img/background.jpg)">            
+        <div class="max-w-screen bottom-0 left-0 max-w-sm absolute">
+            <img class="pl-5" src="./img/mememan.png">
+        </div>
+        <div class="max-w-screen w-full flex flex-col p-6 filter drop-shadow-2xl">
+            <div class="flex flex-col inset-x-0 bottom-16 pb-14 absolute">
+                <div class="flex w-full justify-center">
+                    <span class="text-white font-bold text-4xl">股價行事曆</span>
+                </div>
+                <div class="flex w-full justify-center">
+                    <span class="text-white font-bold text-2xl">大膽預測未來股價</span>
+                </div>
+                <div class="flex w-full justify-center py-4">
+                    <button id="startButtonMobile" class="bg-yellow-500 px-2 py-2 text-1xl rounded-lg text-white shadow ring ring-yellow-500 ring-opacity-50 bg-gradient-to-b hover:from-yellow-400 hover:to-red-400">開始預測</button>
+                </div>            
+            </div>
+            <div class="w-full py-80 flex justify-end px-6">
+                
+            </div>
+        </div>                            
+    </div>
+
+    <!-- about -->
+    <div id="about" class="max-w-screen flex justify-center py-16 md:py-24 bg-gray-100 p-2">
+        <div class="flex flex-col max-w-6xl bg-white rounded-lg shadow-lg">
+            <div class="p-6 pb-0 flex justify-center">
+                <div class="text-3xl md:text-4xl font-bold">
+                    <span class="bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-blue-500">
+                        何謂股價行事曆
+                    </span>
+                </div>
+            </div>
+            <div class="px-4 py-4 flex flex-col">
+                <span class="text-base md:text-xl text-gray-700 p-4 pt-0">當一家公司的股價呈現連續多日上漲或是下跌時，鄉民就會製作該公司未來一個月的股價行事曆，將可能的價格在月曆上面列出來。若製作出來的股價行事曆為連續上漲，則代表股民希望未來股價能夠像行事曆上面一樣漲上去，實現股民的發財夢；若製作出來的行事曆為連續下跌，則代表該公司股價失去市場信心，於是鄉民製作出股價下跌之行事曆用以消遣。</span>
+                <span class="text-base md:text-xl text-gray-700 p-4">目前市場上的股價行事曆版面品質參差不齊，<span class="font-bold">股價行事曆</span> 在此提供您線上工具，讓您輕鬆製作出精美的股價行事曆。</span>
+            </div>
+            <a id="upMobile"></a>
+        </div>
+    </div>
+
+    <!-- Up calender -->
+    <div id="up" class="max-w-screen flex justify-center bg-gray-100 md:py-24 md:bg-white p-2">
+        <div class="w-full flex flex-col max-w-6xl bg-white rounded-lg shadow-lg border md:flex-row">
+            <div class="bg-gradient-to-b from-red-500 to-red-600 w-full md:w-1/2 rounded-t-lg md:rounded-l-lg md:rounded-none">
+                <div class="text-3xl md:text-4xl font-black text-white flex justify-center pt-4">上漲行事曆</div>
+                <div class="text-white px-6 pt-2 flex justify-center">看好一檔股票可以製作上漲行事曆，預期股價蒸蒸日上。</div>
+                <div class="w-full flex justify-center px-6 md:px-8 pt-4 pb-6">
+                    <img class="w-full h-full border-4 border-white rounded-lg" src="./img/up.png" alt="">
+                </div>
+            </div>
+            <div class="p-1 md:p-4 bg-white w-full md:w-1/2 rounded-b-lg md:rounded-r-lg md:rounded-none flex items-center">
+                <div class="flex justify-center py-4 md:p-4">
+                    <form class="max-w-full">
+                        <div class="flex flex-col px-4 py-1">
+                            <div class="w-full">
+                                <label class="text-base pb-1 font-sans text-black text-opacity-70 font-bold">行事曆標題</label>
+                                <label class="up-title-tip text-xs pb-1 text-red-500 hidden">※請填寫行事曆標題</label>
+                            </div>
+                            <input class="up-title text-gray-700 h-10 rounded py-3 px-4 focus:outline-none border border-gray-200 focus:ring-red-50 focus:ring" type="text" maxlength="20" placeholder="例如：台積電股價行事曆">
+                        </div>
+                        <div class="flex flex-row py-1">
+                            <div class="flex flex-col w-1/2 px-4" >
+                                <div class="w-full">
+                                    <label class="text-base pb-1 font-sans text-black text-opacity-70 font-bold">開始日期</label>
+                                    <label class="up-start-date-tip text-xs pb-1 text-red-500 hidden">※請填寫開始日期</label>
+                                </div>
+                                <input class="up-start-date rounded py-2 w-36 sm:w-auto px-4 text-gray-700 focus:outline-none border border-gray-200 focus:ring-red-50 focus:ring" id="startDate" type="date">
+                            </div>
+                            <div class="flex flex-col w-1/2 px-4">
+                                <div class="w-full">
+                                    <label class="text-base pb-1 font-sans text-black text-opacity-70 font-bold">結束日期</label>
+                                    <label class="up-end-date-tip text-xs pb-1 text-red-500 hidden">※請填寫結束日期</label>
+                                </div>
+                                <input class="up-end-date rounded py-2 w-36 sm:w-auto px-4 text-gray-700 focus:outline-none border border-gray-200 focus:ring-red-50 focus:ring" id="endDate" type="date">
+                            </div>
+                        </div>
+                        <div class="flex flex-row px-4 py-1">
+                            <div class="flex flex-col w-2/5 pr-4">
+                                <div class="full">
+                                    <label class="text-base pb-1 font-sans text-black text-opacity-70 font-bold">起始價格</label>
+                                    <label class="up-price-tip text-xs pb-1 text-red-500 hidden">※請填寫起始價格</label>
+                                </div>
+                                <div class="flex flex-row">
+                                    <input class="up-price text-gray-700 w-full h-10 rounded py-3 px-4 focus:outline-none border border-gray-200 focus:ring-red-50 focus:ring" type="number" min="0" max="9999" maxlength="4"> 
+                                    <label class="pl-1 py-2 px-4">元</label>
+                                </div>
+                            </div>
+                            <div class="flex flex-col w-3/5">
+                                <div class="full">
+                                    <label class="text-base pb-1 font-sans text-black text-opacity-70 font-bold">漲幅區間</label>
+                                    <label class="up-percent-tip text-xs pb-1 text-red-500 hidden">※請填寫漲幅區間</label>
+                                </div>
+                                <div class="flex flex-row">
+                                    <div class="relative flex flex-row">
+                                    <input class="up-min-percent text-gray-700 w-full h-10 rounded py-3 px-6 focus:outline-none border border-gray-200 focus:ring-red-50 focus:ring" type="number"> 
+                                    <label class="pl-1 py-2 text-gray-700 absolute right-2">%</label>                          
+                                    </div>                      
+                                    <label class="py-2 px-4">至</label>
+                                    <div class="relative flex flex-row">
+                                    <input class="up-max-percent text-gray-700 w-full h-10 rounded py-3 px-6 focus:outline-none border border-gray-200 focus:ring-red-50 focus:ring" type="number" step="1"> 
+                                    <label class="pl-1 py-2 text-gray-700 absolute right-2">%</label>                          
+                                    </div>
+                                </div>
+                            </div>                
+                        </div>
+                        <div class="w-full py-4 px-4">
+                        <button type="button" class="generate-up bg-red-500 hover:bg-red-700 text-white font-bold rounded py-2 px-2 w-full">
+                            製作上漲行事曆
+                        </button>
+                        </div>
+                    </form>
+                </div>			
+            </div>
+        </div>
+    </div>
+
+    <!-- Down calender -->
+    <div id="down" class="max-w-screen flex justify-center py-16 md:py-24 bg-gray-50 p-2">
+        <div class="w-full flex flex-col-reverse md:flex-row max-w-6xl bg-white rounded-lg shadow-lg border">            
+            <div class="p-1 md:p-4 bg-white w-full md:w-1/2 rounded-b-lg md:rounded-l-lg flex items-center">
+                <div class="flex justify-center py-4 md:p-4">
+                    <form class="max-w-full">
+                        <div class="flex flex-col px-4 py-1">
+                            <div class="w-full">
+                                <label class="text-base pb-1 font-sans text-black text-opacity-70 font-bold">行事曆標題</label>
+                                <label class="down-title-tip text-xs pb-1 text-red-500 hidden">※請填寫行事曆標題</label>
+                            </div>
+                            <input class="down-title text-gray-700 h-10 rounded py-3 px-4 focus:outline-none border border-gray-200 focus:ring-green-50 focus:ring" type="text" maxlength="20" placeholder="例如：台積電股價行事曆">
+                        </div>
+                        <div class="flex flex-row py-1">
+                            <div class="flex flex-col w-1/2 px-4" >
+                                <div class="w-full">
+                                    <label class="text-base pb-1 font-sans text-black text-opacity-70 font-bold">開始日期</label>
+                                    <label class="down-start-date-tip text-xs pb-1 text-red-500 hidden">※請填寫開始日期</label>
+                                </div>
+                                <input class="down-start-date rounded py-2 px-4 w-36 sm:w-auto text-gray-700 focus:outline-none border border-gray-200 focus:ring-green-50 focus:ring" id="startDate" type="date">
+                            </div>
+                            <div class="flex flex-col w-1/2 px-4">
+                                <div class="w-full">
+                                    <label class="text-base pb-1 font-sans text-black text-opacity-70 font-bold">結束日期</label>
+                                    <label class="down-end-date-tip text-xs pb-1 text-red-500 hidden">※請填寫結束日期</label>
+                                </div>                                
+                                <input class="down-end-date rounded py-2 px-4 w-36 sm:w-auto text-gray-700 focus:outline-none border border-gray-200 focus:ring-green-50 focus:ring" id="endDate" type="date">
+                            </div>
+                        </div>
+                        <div class="flex flex-row px-4 py-1">
+                            <div class="flex flex-col w-2/5 pr-4">
+                                <div class="full">
+                                    <label class="text-base pb-1 font-sans text-black text-opacity-70 font-bold">起始價格</label>
+                                    <label class="down-price-tip text-xs pb-1 text-red-500 hidden">※請填寫起始價格</label>
+                                </div>
+                                <div class="flex flex-row">
+                                    <input class="down-price text-gray-700 w-full h-10 rounded py-3 px-4 focus:outline-none border border-gray-200 focus:ring-green-50 focus:ring" type="number"> 
+                                    <label class="pl-1 py-2 px-4">元</label>
+                                </div>
+                            </div>
+                            <div class="flex flex-col w-3/5">
+                                <div class="full">
+                                    <label class="text-base pb-1 font-sans text-black text-opacity-70 font-bold">跌幅區間</label>
+                                    <label class="down-percent-tip text-xs pb-1 text-red-500 hidden">※請填寫跌幅區間</label>
+                                </div>
+                                <div class="flex flex-row">
+                                    <div class="relative flex flex-row">
+                                    <input class="down-min-percent text-gray-700 w-full h-10 rounded py-3 px-6 focus:outline-none border border-gray-200 focus:ring-green-50 focus:ring" type="number"> 
+                                    <label class="pl-1 py-2 text-gray-700 absolute right-2">%</label>                          
+                                    </div>                      
+                                    <label class="py-2 px-4">至</label>
+                                    <div class="relative flex flex-row">
+                                    <input class="down-max-percent text-gray-700 w-full h-10 rounded py-3 px-6 focus:outline-none border border-gray-200 focus:ring-green-50 focus:ring" type="number"> 
+                                    <label class="pl-1 py-2 text-gray-700 absolute right-2">%</label>                          
+                                    </div>
+                                </div>
+                            </div>                
+                        </div>
+                        <div class="w-full py-4 px-4">
+                        <button type="button" class="generate-down bg-green-500 hover:bg-green-700 text-white font-bold rounded py-2 px-2 w-full">
+                            製作下跌行事曆
+                        </button>
+                        </div>
+                    </form>
+                </div>			
+            </div>
+            <div class="bg-gradient-to-b from-green-500 to-green-600 w-full md:w-1/2 rounded-t-lg md:rounded-r-lg md:rounded-none">
+                <div class="text-3xl md:text-4xl font-black text-white flex justify-center pt-4">下跌行事曆</div>
+                <div class="text-white pt-2 px-6 flex justify-center">看空一檔股票可以製作下跌行事曆，預期股價從天而降。</div>
+                <div class="w-full flex justify-center px-6 md:px-8 pt-4 pb-6">
+                    <img class="w-full h-full border-4 border-white rounded-lg" src="./img/down.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- faq -->
+    <div id="faq" class="max-w-screen flex justify-center pt-6 md:pt-24">
+        <div class="max-w-6xl w-full faq bg-contain bg-no-repeat bg-left-bottom p-2" style="background-image: url(./img/stock-market.svg)">
+            <div class="w-full h-full bg-white bg-opacity-90 flex justify-center">
+                <div class="flex flex-col pb-24 px-2">
+                    <div class="flex justify-center"><span class="font-bold text-3xl md:text-4xl text-gray-700">常見問題</span></div>                    
+                    <div class="flex flex-col py-2">                        
+                        <span class="py-4 font-bold text-xl md:text-3xl text-gray-500">網站製作出的預測結果可以相信嗎？</span>
+                        <span class="font-bold text-base md:text-xl text-gray-500">本網站僅提供您製作行事曆模板，並不保證製作出的資料正確性。</span>
+                    </div>
+                    <div class="flex flex-col py-2">
+                        <span class="py-4 font-bold text-xl md:text-3xl text-gray-500">網站會儲存我輸入的資料嗎？</span>
+                        <span class="font-bold text-base md:text-xl text-gray-500">本網站所有程式均在您的瀏覽器上執行，本網站不會收集您的輸入資訊。</span>
+                    </div>
+                    <div class="flex flex-col py-2">
+                        <span class="py-4 font-bold text-xl md:text-3xl text-gray-500">適用國外的股票嗎？</span>
+                        <span class="font-bold text-base md:text-xl text-gray-500">本網站計算程式是根據台股價格等級及相對應的漲跌顏色撰寫，適用台股上市櫃股票漲跌情形，不適用外國股票。</span>
+                    </div>
+                </div>                
+            </div>
+        </div>
+    </div>
+
+    <!-- popup-window -->
+    <div class="popup-window-background hidden">
+        <div class="popup-window z-40 overflow-auto left-0 top-0 bottom-0 right-0 w-full h-full fixed hidden flex items-center">
+            <div class="z-50 relative p-3 mx-auto my-0 w-full h-full max-w-screen-md">
+                <div class="bg-white rounded shadow-lg border flex flex-col overflow-hidden">
+                    <button class="x-button fill-current h-6 w-6 absolute right-0 top-0 m-6 font-3xl font-bold">&times;</button>
+                    <div id="result" class="result p-1 md:p-6 flex-grow">
+                        
+                    </div>
+                <div class="px-2 md:px-6 py-3 border-t">
+                    <div class="flex justify-end">
+                        <button type="button" class="close-button bg-white text-sm md:text-base text-gray-700 border border-gray-400 rounded px-2 py-1 mr-1 md:px-4 md:py-2">關閉</Button>
+                        <button type="button" class="bg-gray-700 text-sm md:text-base text-gray-100 rounded px-3 py-1 mr-1 md:px-4 md:py-2" onclick="download()">儲存</Button>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+        <div class="z-30 overflow-auto left-0 top-0 bottom-0 right-0 w-full h-full fixed bg-black opacity-50 flex items-center">
+            <div class="w-full flex justify-center">
+                <div class="loader"></div>
+            </div>            
+        </div>
+    </div>
+
+</body>
+<footer>
+    <div class="max-w-screen bg-gray-500 flex justify-center">
+        <div class="max-w-6xl w-full flex justify-center p-1 text-white">
+            <span>&copy; Copyright <script>document.write(new Date().getFullYear())</script> <a href="https://github.com/WayneRichen">微日成</a></span>
+        </div>
+    </div>    
+    <!-- <div>Icons made by <a href="https://www.flaticon.com/authors/iconixar" title="iconixar">iconixar</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> -->
+</footer>
+</html>
+<script src="./js/price.js"></script>
+<script src="./js/ui.js"></script>
+<script>
+function download(){
+    html2canvas(document.querySelector("#result")).then(function (canvas) {
+    a = document.createElement("a");
+    a.href = canvas
+      .toDataURL("image/jpeg", 1)
+      .replace("image/jpeg", "image/octet-stream");
+    a.download = "image.jpg";
+    a.click();
+  });
+}
+
+
+
+</script>
