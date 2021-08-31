@@ -332,3 +332,14 @@ downMinPercent.addEventListener('change', ()=>{
 downMaxPercent.addEventListener('change', ()=>{
     if (downMinPercent.value != "" && downMaxPercent.value != "") document.querySelector('label.down-percent-tip').classList.add('hidden');
 });
+
+function download(){
+    html2canvas(document.querySelector("#result")).then(function (canvas) {
+    a = document.createElement("a");
+    a.href = canvas
+      .toDataURL("image/jpeg", 1)
+      .replace("image/jpeg", "image/octet-stream");
+    a.download = "image.jpg";
+    a.click();
+  });
+}
