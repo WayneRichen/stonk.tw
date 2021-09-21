@@ -171,17 +171,39 @@
                             <div class="flex flex-col w-3/5">
                                 <div class="full">
                                     <label class="text-base pb-1 font-sans text-black text-opacity-70 font-bold">漲幅區間</label>
-                                    <label class="up-percent-tip text-xs pb-1 text-red-500 hidden">※請填寫漲幅區間</label>
+                                    <label class="up-percent-tip text-xs pb-1 text-red-500 hidden">※漲幅區間請由小到大排列</label>
                                 </div>
                                 <div class="flex flex-row">
-                                    <div class="relative flex flex-row">
-                                    <input class="up-min-percent text-gray-700 w-full h-10 rounded py-3 px-6 focus:outline-none border border-gray-200 focus:ring-red-50 focus:ring" type="number"> 
-                                    <label class="pl-1 py-2 text-gray-700 absolute right-2">%</label>                          
+                                    <div class="relative flex flex-row w-2/5">
+                                        <select class="up-min-percent text-gray-700 w-full h-10 rounded px-2 focus:outline-none border border-gray-200 focus:ring-red-50 focus:ring">
+                                            <option value="0">0%</option>
+                                            <option value="1">1%</option>
+                                            <option value="2">2%</option>
+                                            <option value="3">3%</option>
+                                            <option value="4">4%</option>
+                                            <option value="5">5%</option>
+                                            <option value="6">6%</option>
+                                            <option value="7">7%</option>
+                                            <option value="8">8%</option>
+                                            <option value="9">9%</option>
+                                            <option value="10">10%</option>
+                                          </select>
                                     </div>                      
-                                    <label class="py-2 px-4">至</label>
-                                    <div class="relative flex flex-row">
-                                    <input class="up-max-percent text-gray-700 w-full h-10 rounded py-3 px-6 focus:outline-none border border-gray-200 focus:ring-red-50 focus:ring" type="number" step="1"> 
-                                    <label class="pl-1 py-2 text-gray-700 absolute right-2">%</label>                          
+                                    <label class="py-2 px-4 w-1/5">至</label>
+                                    <div class="relative flex flex-row w-2/5">
+                                        <select class="up-max-percent text-gray-700 w-full h-10 rounded px-2 focus:outline-none border border-gray-200 focus:ring-red-50 focus:ring">
+                                            <option value="0">0%</option>
+                                            <option value="1">1%</option>
+                                            <option value="2">2%</option>
+                                            <option value="3">3%</option>
+                                            <option value="4">4%</option>
+                                            <option value="5">5%</option>
+                                            <option value="6">6%</option>
+                                            <option value="7">7%</option>
+                                            <option value="8">8%</option>
+                                            <option value="9">9%</option>
+                                            <option value="10">10%</option>
+                                          </select>                        
                                     </div>
                                 </div>
                             </div>                
@@ -240,17 +262,39 @@
                             <div class="flex flex-col w-3/5">
                                 <div class="full">
                                     <label class="text-base pb-1 font-sans text-black text-opacity-70 font-bold">跌幅區間</label>
-                                    <label class="down-percent-tip text-xs pb-1 text-red-500 hidden">※請填寫跌幅區間</label>
+                                    <label class="down-percent-tip text-xs pb-1 text-red-500 hidden">※跌幅區間請由小到大排列</label>
                                 </div>
                                 <div class="flex flex-row">
-                                    <div class="relative flex flex-row">
-                                    <input class="down-min-percent text-gray-700 w-full h-10 rounded py-3 px-6 focus:outline-none border border-gray-200 focus:ring-green-50 focus:ring" type="number"> 
-                                    <label class="pl-1 py-2 text-gray-700 absolute right-2">%</label>                          
-                                    </div>                      
-                                    <label class="py-2 px-4">至</label>
-                                    <div class="relative flex flex-row">
-                                    <input class="down-max-percent text-gray-700 w-full h-10 rounded py-3 px-6 focus:outline-none border border-gray-200 focus:ring-green-50 focus:ring" type="number"> 
-                                    <label class="pl-1 py-2 text-gray-700 absolute right-2">%</label>                          
+                                    <div class="relative flex flex-row w-2/5">
+                                        <select class="down-min-percent text-gray-700 w-full h-10 rounded px-2 focus:outline-none border border-gray-200 focus:ring-green-50 focus:ring">
+                                            <option value="0">0%</option>
+                                            <option value="1">1%</option>
+                                            <option value="2">2%</option>
+                                            <option value="3">3%</option>
+                                            <option value="4">4%</option>
+                                            <option value="5">5%</option>
+                                            <option value="6">6%</option>
+                                            <option value="7">7%</option>
+                                            <option value="8">8%</option>
+                                            <option value="9">9%</option>
+                                            <option value="10">10%</option>
+                                        </select>
+                                    </div>                   
+                                    <label class="py-2 px-4 w-1/5">至</label>
+                                    <div class="relative flex flex-row w-2/5">
+                                        <select class="down-max-percent text-gray-700 w-full h-10 rounded px-2 focus:outline-none border border-gray-200 focus:ring-green-50 focus:ring">
+                                            <option value="0">0%</option>
+                                            <option value="1">1%</option>
+                                            <option value="2">2%</option>
+                                            <option value="3">3%</option>
+                                            <option value="4">4%</option>
+                                            <option value="5">5%</option>
+                                            <option value="6">6%</option>
+                                            <option value="7">7%</option>
+                                            <option value="8">8%</option>
+                                            <option value="9">9%</option>
+                                            <option value="10">10%</option>
+                                        </select>                        
                                     </div>
                                 </div>
                             </div>                

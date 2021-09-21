@@ -81,21 +81,11 @@ home.addEventListener("click", ()=>{
     document.body.scrollIntoView({ behavior: "smooth"});
 }, false);
 
-const upMinPercent = document.querySelector('input.up-min-percent');
-const upMaxPercent = document.querySelector('input.up-max-percent');
-const downMinPercent = document.querySelector('input.down-min-percent');
-const downMaxPercent = document.querySelector('input.down-max-percent');
-upMinPercent.addEventListener('input', tenPercent);
-upMaxPercent.addEventListener('input', tenPercent);
-downMinPercent.addEventListener('input', tenPercent);
-downMaxPercent.addEventListener('input', tenPercent);
-function tenPercent(){
-    if (this.value > 10){
-        this.value = 10;
-    } else if (this.value < 0){
-        this.value = 0;
-    }
-}
+const upMinPercent = document.querySelector('select.up-min-percent');
+const upMaxPercent = document.querySelector('select.up-max-percent');
+const downMinPercent = document.querySelector('select.down-min-percent');
+const downMaxPercent = document.querySelector('select.down-max-percent');
+
 document.querySelector('input.up-price').addEventListener('input', priceRange);
 document.querySelector('input.down-price').addEventListener('input', priceRange);
 function priceRange(){
@@ -211,12 +201,12 @@ generateUp.addEventListener('click',()=>{
 
 function validUpData(){
     let valid = true;
-    if (upTitle.value == "" || upStartDate.value == "" || upEndDate.value == "" || upPrice.value == "" || upMaxPercent.value == "" || upMinPercent.value == "") valid = false;
+    if (upTitle.value == "" || upStartDate.value == "" || upEndDate.value == "" || upPrice.value == "" || parseInt(upMaxPercent.value) < parseInt(upMinPercent.value)) valid = false;
     if (upTitle.value == "" ) document.querySelector('label.up-title-tip').classList.remove('hidden');
     if (upStartDate.value == "") document.querySelector('label.up-start-date-tip').classList.remove('hidden');
     if (upEndDate.value == "") document.querySelector('label.up-end-date-tip ').classList.remove('hidden');
     if (upPrice.value == "") document.querySelector('label.up-price-tip ').classList.remove('hidden');
-    if (upMinPercent.value == "" || upMaxPercent.value == "") document.querySelector('label.up-percent-tip').classList.remove('hidden');
+    if (parseInt(upMinPercent.value) > parseInt(upMaxPercent.value)) document.querySelector('label.up-percent-tip').classList.remove('hidden');
 
     return valid;
 }
@@ -238,11 +228,11 @@ upPrice.addEventListener('change', ()=>{
 });
 
 upMinPercent.addEventListener('change', ()=>{
-    if (upMinPercent.value != "" && upMaxPercent.value != "") document.querySelector('label.up-percent-tip').classList.add('hidden');
+    if (parseInt(upMinPercent.value) <= parseInt(upMaxPercent.value)) document.querySelector('label.up-percent-tip').classList.add('hidden');
 });
 
 upMaxPercent.addEventListener('change', ()=>{
-    if (upMinPercent.value != "" && upMaxPercent.value != "") document.querySelector('label.up-percent-tip').classList.add('hidden');
+    if (parseInt(upMinPercent.value) <= parseInt(upMaxPercent.value)) document.querySelector('label.up-percent-tip').classList.add('hidden');
 });
 
 generateDown.addEventListener('click',()=>{
@@ -299,12 +289,12 @@ generateDown.addEventListener('click',()=>{
 
 function validDownData(){
     let valid = true;
-    if (downTitle.value == "" || downStartDate.value == "" || downEndDate.value == "" || downPrice.value == "" || downMaxPercent.value == "" || downMinPercent.value == "") valid = false;
+    if (downTitle.value == "" || downStartDate.value == "" || downEndDate.value == "" || downPrice.value == "" || parseInt(downMaxPercent.value) < parseInt(downMinPercent.value)) valid = false;
     if (downTitle.value == "" ) document.querySelector('label.down-title-tip').classList.remove('hidden');
     if (downStartDate.value == "") document.querySelector('label.down-start-date-tip').classList.remove('hidden');
     if (downEndDate.value == "") document.querySelector('label.down-end-date-tip ').classList.remove('hidden');
     if (downPrice.value == "") document.querySelector('label.down-price-tip ').classList.remove('hidden');
-    if (downMinPercent.value == "" || downMaxPercent.value == "") document.querySelector('label.down-percent-tip').classList.remove('hidden');
+    if (parseInt(downMinPercent.value) > parseInt(downMaxPercent.value)) document.querySelector('label.down-percent-tip').classList.remove('hidden');
 
     return valid;
 }
@@ -326,11 +316,11 @@ downPrice.addEventListener('change', ()=>{
 });
 
 downMinPercent.addEventListener('change', ()=>{
-    if (downMinPercent.value != "" && downMaxPercent.value != "") document.querySelector('label.down-percent-tip').classList.add('hidden');
+    if (parseInt(downMinPercent.value) <= parseInt(downMaxPercent.value)) document.querySelector('label.down-percent-tip').classList.add('hidden');
 });
 
 downMaxPercent.addEventListener('change', ()=>{
-    if (downMinPercent.value != "" && downMaxPercent.value != "") document.querySelector('label.down-percent-tip').classList.add('hidden');
+    if (parseInt(downMinPercent.value) <= parseInt(downMaxPercent.value)) document.querySelector('label.down-percent-tip').classList.add('hidden');
 });
 
 function download(){
